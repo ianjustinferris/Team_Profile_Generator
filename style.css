@@ -1,0 +1,74 @@
+body{
+    font-family: 'Galatea', sans-serif;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header{     
+    font-size: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(42, 53, 85);
+    height: 5vw;
+    width: 100vw;
+    margin-left: -12px;
+    padding: 0
+}
+
+.main{
+    height: 100vh;
+    width: 100vw;
+    background: rgb(124, 126, 116);
+}
+
+.fa-people-group{
+    margin-left: -20vw;
+}
+
+.cardTop{
+    height: 5vw;
+    width: 100%
+}
+
+.card{
+    height: 13.5vw; 
+}
+
+.row1, .row3{
+    display: flex;
+    justify-content: space-around;
+}
+
+.row2{
+      display: flex;
+    justify-content: center;
+}
+
+#spacer{
+    margin-left:12vw
+}
+
+h3{
+    margin-left: .5vw;
+    margin-top: .5vw
+}
+h4{
+    margin-left: .5vw;
+
+}
+
+li{
+      margin-left: -1vw;
+}
+
+ul{
+    margin-top: 1.2vw
+}
+
+i{
+    margin-right: .4vw;
+}
