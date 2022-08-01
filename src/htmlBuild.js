@@ -1,85 +1,79 @@
-//Array to hold positions of Team Members
-const myTeam = [];
-//Unify array
-const teamMembers = myTeam.join('')
 
 //Create Manager card
-function buildManager(m) {
-    let manager =
-        ` <div class='row row1'>
+function buildManager(manager) {
+    return ` 
+    <div class='row row1'>
             <div class="card g-3" style="width: 13rem;">
                 <section class="cardTop">
-                    <h3>${m.getName}</h3>
-                    <h4><i class="fa-solid fa-mug-hot"></i>${m.getRole}</h4>
+                    <h3>${manager.getName}</h3>
+                    <h4><i class="fa-solid fa-mug-hot"></i>${manager.getRole}</h4>
                 </section>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${m.getId}</li>
-                            <li class="list-group-item">${m.getEmail}</li>
-                            <li class="list-group-item">${m.getOffice}</li>
+                            <li class="list-group-item">${manager.getId}</li>
+                            <li class="list-group-item">${manager.getEmail}</li>
+                            <li class="list-group-item">${manager.getOffice}</li>
                         </ul>
                     </div>
             </div>
         </div>`;
-
-    myTeam.push(manager);
-    return myTeam;
 }
 
 //Create Engineer card/s
-function buildEngineer(e) {
-    let engineer =
+function buildEngineer(engineers) {
+    const htmlEngineer = engineers.map((engineer) => {
         `<div class='row row1'>
             <div class="card g-3" style="width: 13rem;">
                 <section class="cardTop">
-                    <h3>${e.getName}</h3>
-                    <h4><i class="fa-solid fa-mug-hot"></i>${e.getRole}</h4>
+                    <h3>${engineer.getName}</h3>
+                    <h4><i class="fa-solid fa-mug-hot"></i>${engineer.getRole}</h4>
                 </section>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${e.getId}</li>
-                            <li class="list-group-item">${e.getEmail}</li>
-                            <li class="list-group-item">${e.getGithub}</li>
+                            <li class="list-group-item">${engineer.getId}</li>
+                            <li class="list-group-item">${engineer.getEmail}</li>
+                            <li class="list-group-item">${engineer.getGithub}</li>
                         </ul>
                     </div>
             </div>
         </div>`;
-    myTeam.push(engineer);
-    return myTeam;
+    })
+    return htmlEngineer.join('');
 }
 
 //Create Intern card/s
-function buildIntern(i) {
-    let intern =
+function buildIntern(interns) {
+    const htmlIntern = interns.map((intern) => {
         `<div class='row row1'>
             <div class="card g-3" style="width: 13rem;">
                 <section class="cardTop">
-                    <h3>${i.getName}</h3>
-                    <h4><i class="fa-solid fa-mug-hot"></i>${i.getRole}</h4>
+                    <h3>${intern.getName}</h3>
+                    <h4><i class="fa-solid fa-mug-hot"></i>${intern.getRole}</h4>
                 </section>
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${i.getId}</li>
-                            <li class="list-group-item">${i.getEmail}</li>
-                            <li class="list-group-item">${i.getSchool}</li>
+                            <li class="list-group-item">${intern.getId}</li>
+                            <li class="list-group-item">${intern.getEmail}</li>
+                            <li class="list-group-item">${intern.getSchool}</li>
                         </ul>
                     </div>
             </div>
         </div>`;
-    myTeam.push(intern);
-    return myTeam;
+
+    })
+    return htmlIntern.join('');
 }
 
-//Call functions
+//Call functions as template literals. To be passed to buildPage()
 function buildTeam(teamMembers) {
-    buildManager(teamMembers.m);
-    buildEngineer(teamMembers.e);
-    buildIntern(teamMembers.i);
-
-    return myTeam.join('')
+    return `
+    ${buildManager(teamMembers)}
+    ${buildEngineer(teamMembers.engineers)}
+    ${buildIntern(teamMembers.interns)}
+    `;
 }
 
-//Pass buildTeam to HTML document
+//Pass buildTeam() to full HTML document
 function buildPage(teamMembers) {
 
     return `
@@ -109,6 +103,7 @@ function buildPage(teamMembers) {
                                         <!-- JavaScript Bundle with Popper -->
                                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
                                     </body>
-                    </html>`};
+                    </html>`
+};
 
 module.exports = buildPage;
