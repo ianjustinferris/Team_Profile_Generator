@@ -1,4 +1,4 @@
-body{
+body {
     font-family: 'Galatea', sans-serif;
     font-weight: 200;
     display: flex;
@@ -6,7 +6,7 @@ body{
     align-items: center;
 }
 
-#header{     
+#header {
     font-size: 3vw;
     display: flex;
     justify-content: center;
@@ -19,56 +19,57 @@ body{
     padding: 0
 }
 
-.main{
-    height: 100vh;
+.main {
+    font-size: .75vw;
+    height: 110%;
     width: 100vw;
-    background: rgb(124, 126, 116);
+    background: rgb(214, 247, 206);
 }
 
-.fa-people-group{
+.fa-people-group {
     margin-left: -20vw;
 }
 
-.cardTop{
-    height: 5vw;
+.cardTop {
+    height: 4vw;
     width: 100%
 }
 
-.card{
-    height: 13.5vw; 
+.card {
+    height: 13.5vw;
+    margin: 0px;
+    margin-right: 110px;
+    margin-left: 110px
 }
 
-.row1, .row3{
+.row1,
+.row3 {
     display: flex;
-    justify-content: space-around;
-}
-
-.row2{
-      display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-#spacer{
-    margin-left:12vw
+.row2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-h3{
+h3 {
     margin-left: .5vw;
     margin-top: .5vw
 }
-h4{
+
+h4 {
     margin-left: .5vw;
 
 }
 
-li{
-      margin-left: -1vw;
+li {
+    margin-left: -1vw;
 }
 
-ul{
-    margin-top: 1.2vw
-}
 
-i{
+i {
     margin-right: .4vw;
 }

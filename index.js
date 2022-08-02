@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const buildPage = require('./src/htmlBuild');
+
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -16,49 +17,45 @@ const teamMembers = {
 const managerQuestions = [
     {
         type: 'input',
-        name: "ManagerName",
+        name: "managerName",
         message: "Please enter the Manager's name.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a name for the manager'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "ManagerId",
+        name: "managerId",
         message: "Please enter the Manager's ID.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid ID for the manager'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "ManagerEmail",
+        name: "managerEmail",
         message: "Please enter the Manager's email.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid email for the manager'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "ManagerOffice",
+        name: "managerOffice",
         message: "Please enter the Manager's office number.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid office number for the manager'
-            } else
-                return true
+            } return true
         }
     },
 
@@ -68,49 +65,45 @@ const managerQuestions = [
 const engineerQuestions = [
     {
         type: 'input',
-        name: "EngineerName",
+        name: "engineerName",
         message: "Please enter the Engineer's name.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid name for the engineer.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "EngineerId",
+        name: "engineerId",
         message: "Please enter the Engineer's ID.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid ID for the engineer.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "EngineerEmail",
+        name: "engineerEmail",
         message: "Please enter the Engineer's email.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid email for the engineer.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "EngineerGithub",
+        name: "engineerGithub",
         message: "Please enter the Engineer's github.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid github for the engineer.'
-            } else
-                return true
+            } return true
         }
     },
 ]
@@ -119,49 +112,45 @@ const engineerQuestions = [
 const internQuestions = [
     {
         type: 'input',
-        name: "InternName",
+        name: "internName",
         message: "Please enter the Intern's name.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid name for the intern.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "InternId",
+        name: "internId",
         message: "Please enter the Intern's ID.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid ID for the intern.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "InternEmail",
+        name: "internEmail",
         message: "Please enter the Intern's email.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid email for the intern.'
-            } else
-                return true
+            } return true
         }
     },
 
     {
         type: 'input',
-        name: "InternSchool",
+        name: "internSchool",
         message: "Please enter the Intern's school.",
         validate: (answer) => {
             if (answer == '') {
                 return 'Please enter a valid school for the intern.'
-            } else
-                return true
+            } return true
         }
     },
 ]
@@ -178,6 +167,7 @@ function getManagerInfo() {
                 answers.managerOffice
             );
             teamMembers.manager = manager;
+            console.log(teamMembers.manager)
             teamProfileGenerator()
         });
 }
@@ -192,9 +182,10 @@ function getEngineerInfo() {
                 answers.engineerName,
                 answers.engineerId,
                 answers.engineerEmail,
-                answers.engineerOffice
+                answers.engineerGithub
             );
             teamMembers.engineers.push(engineer);
+            console.log(teamMembers.engineers)
             teamProfileGenerator();
         });
 }
@@ -206,12 +197,13 @@ function getInternInfo() {
         .prompt(internQuestions)
         .then((answers) => {
             const intern = new Intern(
-                answers.managerName,
-                answers.managerId,
-                answers.managerEmail,
-                answers.managerOffice
+                answers.internName,
+                answers.internId,
+                answers.internEmail,
+                answers.internSchool
             );
             teamMembers.interns.push(intern);
+            console.log(teamMembers.interns)
             teamProfileGenerator();
         });
 }
@@ -237,13 +229,13 @@ function teamProfileGenerator() {
                     getInternInfo();
                     break;
                 default:
-                    buildTeam();
+                    buildHTML();
             }
         });
 }
 
 //Function to write file to dist folder calling buildPage() to render html 
-function buildTeam() {
+function buildHTML() {
     fs.writeFile("dist/myTeam.html", buildPage(teamMembers), (err) => {
         if (err) {
             console.log(err);
