@@ -11,8 +11,8 @@ With a focus on maintainability, unit tests were written for each section using 
 
 - [Installation](#Installation)
 - [Usage](#Usage)
-- [GIF](#GIF)
-- [Screen_Shot](#Screen_Shot)
+- [Video](#Video)
+- [Screen_Shot](#Screen-Shot)
 - [Credits](#Credits)
 - [License](#License)
 - [Questions](#Questions)
@@ -24,21 +24,17 @@ Users should run `npm i` to install necessary dependencies.
 
 ## Usage
 
+In order to run the test suite, users should run `npm test`
+
+To run the program, type `npm start` in the command line. Follow the prompts to build your team, and select 'I'm DONE!' when finished.
  
+## Video 
 
-## GIF
+https://watch.screencastify.com/v/5tMgQEbULBxuBwasJAZC
 
-Showcasing off-line Functionality 
+## Screen-Shot
 
-![off-line Funtionality GIF](/src/images/offlineFunctionality.gif)
-
-## Screen_Shot
-
-![Service worker Screen Shot](/assets/tpg.png)
-
-Implementation of IndexedDB
-
-![IndexedDB Screen Shot](/client/src/images/IndexedDB.png)
+![completed team page](/assets/tpg.png)
 
 ## Credits
 
